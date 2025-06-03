@@ -1,0 +1,37 @@
+<%- include('partials/header.ejs') %>
+<body>
+    <div class="container mt-5">
+        <div class="card" id="blog-content">
+            <div class="card-header text-center">
+                <h1><%= blogPost.title.replace(/-/g, ' '), %></h1>
+                <p class="text-muted">By <strong><%= blogPost.author.replace(/-/g, ' '), %></strong> on <%= blogPost.date %></p>
+            </div>
+            <div class="card-body">
+                <p><%= blogPost.content %></p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="/" class="btn btn-primary">Back to Home</a>
+                <button data-edit="<%= blogPost.id%>" class="btn btn-secondary edit-button">Edit Post</button>
+                <button data-delete="<%= blogPost.id%>" class="btn btn-danger delete-button">Delete Post</button>
+            </div>
+        </div>
+
+        <div class="update-form mt-4 hidden">
+            <h2>Edit Post</h2>
+            <form  id="form-update" action="/edit>" method="POST">
+                <input type="hidden" name="id" value="<%= blogPost.id %>">
+                <div class="mb-3">
+                    <input type="text" name="title" class="form-control" placeholder="Title" value="<%= blogPost.title.replace(/-/g, ' ') %>" required>
+                </div>
+                <div class="mb-3">
+                    <textarea name="content" class="form-control" placeholder="Content" required><%= blogPost.content %></textarea>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="author" class="form-control" placeholder="Author" value="<%= blogPost.author.replace(/-/g, ' ') %>" required>
+                </div>
+                <button type="submit" class="btn btn-success">Update Post</button>
+                <button type="button" class="btn btn-outline-warning cancel-button">Cancel Update</button>
+            </form>
+    </div>
+</body>
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,23 @@
+<%- include('partials/header.ejs') %>
+<div class="container mt-5">
+    <h2>Login</h2>
+    <form action="/login" method="POST" class="login-form" style="max-width:400px;margin:auto;">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" name="username" class="form-control"  autocomplete="username">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" name="password" class="form-control"  autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+  
+    <!-- Go back home link -->
+    <div  id="home-link">
+      <a href="/" class="text-decoration-none text-primary">← Go back home</a>
+    </div>
+  </div>
+  
+
+<%- include('partials/footer.ejs') %>

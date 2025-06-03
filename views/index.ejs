@@ -1,0 +1,84 @@
+<%- include('partials/header.ejs') %>
+<body>
+    <section class="hero hero-section hero-top d-flex align-items-center justify-content-center text-center">
+        <div class="hero-content">
+          <h1 class="display-3 fw-bold">Welcome to My Blog</h1>
+          <p class="lead mb-4">Discover stories, tutorials, and more from our community.</p>
+          <a href="/about" class="btn btn-primary btn-lg">Learn More</a>
+        </div>
+      </section>
+    <div class="container">
+        
+        <% if (locals.blogPosts.length > 0) { %> 
+          <h2 id="latest-post" class="text-2xl mb-6"><%= locals.blogType%></h2>  
+          <div class="blog-grid">
+            <% blogPosts.forEach(post => { %>
+              <div class="blog-post">
+                <h3 class="text-xl font-semibold mb-2">
+                  <a href="blog/<%= post.title %>/<%= post.id%>" class="hover:text-primary">
+                    <%= post.title.replace(/-/g, ' ') %>
+                  </a>
+                </h3>
+                <div class="text-sm text-gray-600 mb-4">
+                  <span>By <%= post.author.replace(/-/g, ' ') %></span>
+                  <span class="mx-2">•</span>
+                  <span><%= post.date %></span>
+                </div>
+                <p class="text-gray-700"><%= post.content %></p>
+              </div>
+            <% }) %>
+          </div>
+    <% if (locals.blogPosts.length > 3) { %>
+        <button id="view-all-blogs" type="button">View All</button>
+    <% } %>
+    
+    <% } else { %>
+        <h2>No Post Available</h2>
+    <% } %>
+
+    <% if (alert) { %>
+        <div id="msg" data-success="<%=alert.message %>"></div>
+    <% } else {%>
+        <div id="msg" data-success="<%=locals.successMessage%>"></div>
+    <% } %>
+    
+<section id="submit-post">
+    <h2>Submit a New Post</h2>
+        <form action="/submit" method="POST">
+            <input type="text" name="title" placeholder="Title" required>
+            <textarea name="content" placeholder="Content" required></textarea>
+            <input type="text" name="author" placeholder="Author" required>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    
+
+<section id="sort-post">
+    </form>
+    <h2>Sort Posts</h2>
+    <form action="/sort" method="GET" >
+        <select name="sortBy">
+            <option value="date">Sort by Date</option>
+            <option value="title">Sort by Title</option>
+        </select>
+        <select name="order">
+            <option value="desc">Descending</option>
+            <option value="asc">Ascending</option>
+        </select>
+        <button type="submit">Sort</button>
+    </form>
+</section>
+    
+
+    <section id="delete-form">
+        <h2 >Delete a Post</h2> 
+        <input type="text" id="delete-search-query" name="title" placeholder="Title of the post to delete" required>
+        <button class="delete-button hidden-delete-button" type="submit">Delete</button>       
+   
+    </section>
+    
+    
+
+    </div>
+</body>
+<%- include('partials/footer.ejs') %>
