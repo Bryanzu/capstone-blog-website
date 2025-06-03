@@ -1,4 +1,5 @@
 # Capstone Blog Website
+
 My first attempt at a blog website using Node, Express and EJS
 A modern, minimal blog platform built with Node.js, Express, and EJS. This project allows users to read, search, and manage blog posts with a clean, responsive interface.
 
@@ -21,21 +22,26 @@ A modern, minimal blog platform built with Node.js, Express, and EJS. This proje
 ### Installation
 
 1. **Clone the repository:**
+
    ```sh
-   git clone https://github.com/yourusername/capstone-blog.git
+   git clone https://github.com/Bryanzu/capstone-blog-website.git
    cd capstone-blog
    ```
 
 2. **Install dependencies:**
+
    ```sh
    npm install
    ```
 
 3. **Run the server:**
+
    ```sh
    npm start
    ```
+
    Or for development with auto-reload:
+
    ```sh
    npx nodemon index.js
    ```
@@ -80,4 +86,4 @@ This project is for educational purposes. Feel free to use, modify, and share!
 
 ---
 
-*Built with ❤️ and Express.js*
+_Built with ❤️ and Express.js_
